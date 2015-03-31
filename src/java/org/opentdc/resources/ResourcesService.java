@@ -70,7 +70,7 @@ public class ResourcesService extends GenericService<ServiceProvider> {
 	) throws ReflectiveOperationException {
 		logger.info("> ResourcesService()");
 		if (sp == null) {
-			sp = this.getServiceProvider(context);
+			sp = this.getServiceProvider(ResourcesService.class, context);
 		}
 		logger.info("ResourcesService() initialized");
 	}
