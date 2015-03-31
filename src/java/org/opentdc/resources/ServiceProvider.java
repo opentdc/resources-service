@@ -21,17 +21,25 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-package org.opentdc.resources.test;
+package org.opentdc.resources;
 
-import static org.junit.Assert.fail;
+import java.util.List;
 
-import org.junit.Test;
+import org.opentdc.service.exception.DuplicateException;
+import org.opentdc.service.exception.NotFoundException;
 
-public class ResourcesTest {
+public interface ServiceProvider {
 
-	@Test
-	public void test() {
-		fail("Not yet implemented");
-	}
+	public abstract List<ResourceModel> listResources();
+
+	public abstract ResourceModel createResource(ResourceModel resource) throws DuplicateException;
+
+	public abstract ResourceModel readResource(String id) throws NotFoundException;
+
+	public abstract ResourceModel updateResource(ResourceModel resource) throws NotFoundException;
+
+	public abstract void deleteResource(String id) throws NotFoundException;
+
+	public abstract int countResources();
 
 }
