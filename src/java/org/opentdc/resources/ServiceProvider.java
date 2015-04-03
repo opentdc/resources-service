@@ -30,13 +30,18 @@ import org.opentdc.service.exception.NotFoundException;
 
 public interface ServiceProvider {
 
-	public abstract List<ResourceModel> listResources();
+	public abstract List<ResourceModel> listResources(
+		String queryType,
+		String query,
+		long position,
+		long size
+	);
 
 	public abstract ResourceModel createResource(ResourceModel resource) throws DuplicateException;
 
 	public abstract ResourceModel readResource(String id) throws NotFoundException;
 
-	public abstract ResourceModel updateResource(ResourceModel resource) throws NotFoundException;
+	public abstract ResourceModel updateResource(String id, ResourceModel resource) throws NotFoundException;
 
 	public abstract void deleteResource(String id) throws NotFoundException;
 

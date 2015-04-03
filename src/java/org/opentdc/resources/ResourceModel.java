@@ -23,8 +23,6 @@
  */
 package org.opentdc.resources;
 
-import java.util.Formatter;
-import java.util.Locale;
 import java.util.UUID;
 
 import javax.xml.bind.annotation.XmlAccessType;
@@ -106,19 +104,4 @@ public class ResourceModel {
 		this.lastName = lastName;
 	}
 
-	/*
-	 * (non-Javadoc)
-	 * 
-	 * @see java.lang.Object#toString()
-	 */
-	@Override
-	public String toString() {
-		StringBuilder _sb = new StringBuilder();
-		Formatter _formatter = new Formatter(_sb, Locale.US);
-		_formatter
-				.format("{\n\tid:\t%s\n\txri:\t%s\n\tfirstName:\t%s\n\tlastName:\t%s\n}",
-						getId(), getXri(), getFirstName(), getLastName());
-		_formatter.close();
-		return _sb.toString();
-	}
 }

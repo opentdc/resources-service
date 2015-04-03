@@ -29,12 +29,14 @@ import java.util.logging.Logger;
 import javax.servlet.ServletContext;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
+import javax.ws.rs.DefaultValue;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.Context;
 import javax.ws.rs.core.MediaType;
 
@@ -78,8 +80,13 @@ public class ResourcesService extends GenericService<ServiceProvider> {
 	/******************************** resource *****************************************/
 	@GET
 	@Path("/")
-	public List<ResourceModel> listResources() {
-		return sp.listResources();
+	public List<ResourceModel> listResources(
+		@DefaultValue(DEFAULT_QUERY) @QueryParam("query") String query,
+		@DefaultValue(DEFAULT_QUERY_TYPE) @QueryParam("queryType") String queryType,
+		@DefaultValue(DEFAULT_POSITION) @QueryParam("position") long position,
+		@DefaultValue(DEFAULT_SIZE) @QueryParam("size") long size			
+	) {
+		return sp.listResources(queryType, query, position, size);
 	}
 
 	@POST
@@ -95,9 +102,12 @@ public class ResourcesService extends GenericService<ServiceProvider> {
 	}
 
 	@PUT
-	@Path("/")
-	public ResourceModel updateResource(ResourceModel resource) throws NotFoundException {
-		return sp.updateResource(resource);
+	@Path("/{id}")
+	public ResourceModel updateResource(
+		@PathParam("id") String id,
+		ResourceModel resource
+	) throws NotFoundException {
+		return sp.updateResource(id, resource);
 	}
 
 	@DELETE
