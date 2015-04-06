@@ -33,8 +33,8 @@ public interface ServiceProvider {
 	public abstract List<ResourceModel> listResources(
 		String queryType,
 		String query,
-		long position,
-		long size
+		int position,
+		int size
 	);
 
 	public abstract ResourceModel createResource(ResourceModel resource) throws DuplicateException;

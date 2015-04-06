@@ -32,6 +32,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement
 public class ResourceModel {
+	
 	public final static String DEF_XRI = "XRI_UNDEFINED";
 	public final static String DEF_FIRSTNAME = "FIRSTNAME_UNDEFINED";
 	public final static String DEF_LASTNAME = "LASTNAME_UNDEFINED";
@@ -40,17 +41,30 @@ public class ResourceModel {
 	private String xri;
 	private String firstName;
 	private String lastName;
+	private String name;
 
-	public ResourceModel() {
-		this.id = UUID.randomUUID().toString();
+	public ResourceModel(
+	) {
 		this.xri = DEF_XRI;
 		this.setFirstName(DEF_FIRSTNAME);
-		this.setLastName(DEF_LASTNAME);
+		this.setLastName(DEF_LASTNAME);		
 	}
 
-	public ResourceModel(String firstName, String lastName) {
-		this.id = UUID.randomUUID().toString();
-		this.xri = DEF_XRI;
+	public ResourceModel(
+		String id
+	) {
+		this();
+		this.id = id;
+	}
+
+	public ResourceModel(
+		String id,
+		String xri,
+		String firstName, 
+		String lastName
+	) {
+		this.id = id;
+		this.xri = xri;
 		this.setFirstName(firstName);
 		this.setLastName(lastName);
 	}
@@ -66,8 +80,10 @@ public class ResourceModel {
 	/**
 	 * Set the ID to a unique random number
 	 */
-	public void setId() {
-		this.id = UUID.randomUUID().toString();
+	public void setId(
+		String id
+	) {
+		this.id = id;
 	}
 
 	/**
@@ -87,7 +103,6 @@ public class ResourceModel {
 		this.xri = xri;
 	}
 
-
 	public String getFirstName() {
 		return firstName;
 	}
@@ -104,4 +119,12 @@ public class ResourceModel {
 		this.lastName = lastName;
 	}
 
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+	
 }

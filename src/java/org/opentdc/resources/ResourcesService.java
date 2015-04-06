@@ -75,8 +75,8 @@ public class ResourcesService extends GenericService<ServiceProvider> {
 	public List<ResourceModel> listResources(
 		@DefaultValue(DEFAULT_QUERY) @QueryParam("query") String query,
 		@DefaultValue(DEFAULT_QUERY_TYPE) @QueryParam("queryType") String queryType,
-		@DefaultValue(DEFAULT_POSITION) @QueryParam("position") long position,
-		@DefaultValue(DEFAULT_SIZE) @QueryParam("size") long size			
+		@DefaultValue(DEFAULT_POSITION) @QueryParam("position") int position,
+		@DefaultValue(DEFAULT_SIZE) @QueryParam("size") int size			
 	) {
 		return sp.listResources(queryType, query, position, size);
 	}
