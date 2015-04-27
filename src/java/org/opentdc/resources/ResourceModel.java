@@ -23,8 +23,6 @@
  */
 package org.opentdc.resources;
 
-import java.util.UUID;
-
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -32,39 +30,16 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement
 public class ResourceModel {
-	
-	public final static String DEF_XRI = "XRI_UNDEFINED";
-	public final static String DEF_FIRSTNAME = "FIRSTNAME_UNDEFINED";
-	public final static String DEF_LASTNAME = "LASTNAME_UNDEFINED";
-
 	private String id;
-	private String xri;
+	private String name;
 	private String firstName;
 	private String lastName;
-	private String name;
 
-	public ResourceModel(
-	) {
-		this.xri = DEF_XRI;
-		this.setFirstName(DEF_FIRSTNAME);
-		this.setLastName(DEF_LASTNAME);		
+	public ResourceModel() {
 	}
 
-	public ResourceModel(
-		String id
-	) {
-		this();
-		this.id = id;
-	}
-
-	public ResourceModel(
-		String id,
-		String xri,
-		String firstName, 
-		String lastName
-	) {
-		this.id = id;
-		this.xri = xri;
+	public ResourceModel(String name, String firstName, String lastName) {
+		this.setName(name);
 		this.setFirstName(firstName);
 		this.setLastName(lastName);
 	}
@@ -80,27 +55,16 @@ public class ResourceModel {
 	/**
 	 * Set the ID to a unique random number
 	 */
-	public void setId(
-		String id
-	) {
+	public void setId(String id) {
 		this.id = id;
 	}
-
-	/**
-	 * Return the object ID in the backend.
-	 * @return the xri 
-	 */
-	public String getXri() {
-		return xri;
+	
+	public String getName() {
+		return name;
 	}
-
-	/**
-	 * Set the object ID for the backend.
-	 * @param xri
-	 *            the xri to set
-	 */
-	public void setXri(String xri) {
-		this.xri = xri;
+	
+	public void setName(String name) {
+		this.name = name;
 	}
 
 	public String getFirstName() {
@@ -118,13 +82,4 @@ public class ResourceModel {
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
 	}
-
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-	
 }
