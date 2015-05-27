@@ -23,8 +23,6 @@
  */
 package org.opentdc.resources;
 
-import java.util.Arrays;
-
 /**
  * Configure default JSON provider.
  * 
@@ -35,7 +33,7 @@ public class ResourcesProvider<T> extends org.apache.cxf.jaxrs.provider.json.JSO
 	public ResourcesProvider(
 	) {
 		super();
-		this.setSerializeAsArray(true);
-		this.setArrayKeys(Arrays.asList("@TODO"));
+		// this.setSerializeAsArray(true);
+		// this.setArrayKeys(Arrays.asList("@TODO"));
 	}	
 }

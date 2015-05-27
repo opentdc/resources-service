@@ -44,7 +44,4 @@ public interface ServiceProvider {
 	public abstract ResourceModel updateResource(String id, ResourceModel resource) throws NotFoundException;
 
 	public abstract void deleteResource(String id) throws NotFoundException;
-
-	public abstract int countResources();
-
 }

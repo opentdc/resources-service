@@ -43,6 +43,7 @@ import javax.ws.rs.core.MediaType;
 import org.opentdc.service.GenericService;
 import org.opentdc.service.exception.DuplicateException;
 import org.opentdc.service.exception.NotFoundException;
+import org.opentdc.service.exception.ValidationException;
 
 @Path("/api/resource")
 @Consumes(MediaType.APPLICATION_JSON)
@@ -83,13 +84,17 @@ public class ResourcesService extends GenericService<ServiceProvider> {
 
 	@POST
 	@Path("/")
-	public ResourceModel createResource(ResourceModel resource) throws DuplicateException {
+	public ResourceModel createResource(
+			ResourceModel resource) 
+		throws DuplicateException, ValidationException {
 		return sp.createResource(resource);
 	}
 
 	@GET
 	@Path("/{id}")
-	public ResourceModel readResource(@PathParam("id") String id) throws NotFoundException {
+	public ResourceModel readResource(
+			@PathParam("id") String id) 
+		throws NotFoundException {
 		return sp.readResource(id);
 	}
 
@@ -104,14 +109,9 @@ public class ResourcesService extends GenericService<ServiceProvider> {
 
 	@DELETE
 	@Path("/{id}")
-	public void deleteResource(@PathParam("id") String id) throws NotFoundException {
+	public void deleteResource(
+			@PathParam("id") String id) 
+		throws NotFoundException {
 		sp.deleteResource(id);
 	}
-
-	@GET
-	@Path("/count")
-	public int countResources() {
-		return sp.countResources();
-	}
-
 }
