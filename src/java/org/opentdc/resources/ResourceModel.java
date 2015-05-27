@@ -34,14 +34,16 @@ public class ResourceModel {
 	private String name;
 	private String firstName;
 	private String lastName;
+	private String contactId;
 
 	public ResourceModel() {
 	}
 
-	public ResourceModel(String name, String firstName, String lastName) {
-		this.setName(name);
-		this.setFirstName(firstName);
-		this.setLastName(lastName);
+	public ResourceModel(String name, String firstName, String lastName, String contactId) {
+		this.name = name;
+		this.firstName = firstName;
+		this.lastName = lastName;
+		this.contactId = contactId;
 	}
 
 	/**
@@ -81,5 +83,13 @@ public class ResourceModel {
 
 	public void setLastName(String lastName) {
 		this.lastName = lastName;
+	}
+
+	public String getContactId() {
+		return contactId;
+	}
+
+	public void setContactId(String contactId) {
+		this.contactId = contactId;
 	}
 }
