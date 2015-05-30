@@ -42,6 +42,8 @@ import javax.ws.rs.core.MediaType;
 
 import org.opentdc.service.GenericService;
 import org.opentdc.service.exception.DuplicateException;
+import org.opentdc.service.exception.InternalServerErrorException;
+import org.opentdc.service.exception.NotAllowedException;
 import org.opentdc.service.exception.NotFoundException;
 import org.opentdc.service.exception.ValidationException;
 
@@ -103,7 +105,7 @@ public class ResourcesService extends GenericService<ServiceProvider> {
 	public ResourceModel updateResource(
 		@PathParam("id") String id,
 		ResourceModel resource
-	) throws NotFoundException {
+	) throws NotFoundException, NotAllowedException {
 		return sp.updateResource(id, resource);
 	}
 
@@ -111,7 +113,7 @@ public class ResourcesService extends GenericService<ServiceProvider> {
 	@Path("/{id}")
 	public void deleteResource(
 			@PathParam("id") String id) 
-		throws NotFoundException {
+		throws NotFoundException, InternalServerErrorException {
 		sp.deleteResource(id);
 	}
 }

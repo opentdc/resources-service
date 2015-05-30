@@ -25,8 +25,7 @@ package org.opentdc.resources;
 
 import java.util.List;
 
-import org.opentdc.service.exception.DuplicateException;
-import org.opentdc.service.exception.NotFoundException;
+import org.opentdc.service.exception.*;
 
 public interface ServiceProvider {
 
@@ -37,11 +36,20 @@ public interface ServiceProvider {
 		int size
 	);
 
-	public abstract ResourceModel createResource(ResourceModel resource) throws DuplicateException;
+	public abstract ResourceModel createResource(
+		ResourceModel resource) 
+		throws DuplicateException, ValidationException;
 
-	public abstract ResourceModel readResource(String id) throws NotFoundException;
+	public abstract ResourceModel readResource(
+		String id) 
+		throws NotFoundException;
 
-	public abstract ResourceModel updateResource(String id, ResourceModel resource) throws NotFoundException;
+	public abstract ResourceModel updateResource(
+		String id, 
+		ResourceModel resource) 
+		throws NotFoundException, NotAllowedException;
 
-	public abstract void deleteResource(String id) throws NotFoundException;
+	public abstract void deleteResource(
+		String id) 
+		throws NotFoundException, InternalServerErrorException;
 }
