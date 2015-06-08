@@ -47,7 +47,7 @@ public interface ServiceProvider {
 	public abstract ResourceModel updateResource(
 		String id, 
 		ResourceModel resource) 
-		throws NotFoundException, NotAllowedException;
+		throws NotFoundException, ValidationException;
 
 	public abstract void deleteResource(
 		String id) 
