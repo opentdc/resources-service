@@ -43,7 +43,6 @@ import javax.ws.rs.core.MediaType;
 import org.opentdc.service.GenericService;
 import org.opentdc.service.exception.DuplicateException;
 import org.opentdc.service.exception.InternalServerErrorException;
-import org.opentdc.service.exception.NotAllowedException;
 import org.opentdc.service.exception.NotFoundException;
 import org.opentdc.service.exception.ValidationException;
 
@@ -105,7 +104,7 @@ public class ResourcesService extends GenericService<ServiceProvider> {
 	public ResourceModel updateResource(
 		@PathParam("id") String id,
 		ResourceModel resource
-	) throws NotFoundException, NotAllowedException {
+	) throws NotFoundException, ValidationException {
 		return sp.updateResource(id, resource);
 	}
 
