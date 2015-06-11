@@ -34,10 +34,10 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 public class ResourceModel {
 	private String id;			// sortable
-	private String name;
-	private String firstName;
-	private String lastName;
-	private String contactId;
+	private String name;		// mandatory
+	private String firstName;	// mandatory
+	private String lastName;	// mandatory
+	private String contactId;	// mandatory
 	private Date createdAt;
 	private String createdBy;
 	private Date modifiedAt;
