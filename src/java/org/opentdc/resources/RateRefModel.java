@@ -30,112 +30,110 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 
+/**
+ * A Reference to a Rate.
+ * We only keep a reference (= ID) as the foreign key to a RatesModel in RatesService
+ * plus the commonly used derived attribute rateTitle.
+ */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement
-public class ResourceModel {
-	private String id;			// sortable
-	private String name;		// mandatory
-	private String firstName;	// derived
-	private String lastName;	// derived
-	private String contactId;	// mandatory
+public class RateRefModel {
+	private String id;				// sortable
+	private String rateId;			// mandatory
+	private String rateTitle;		// read-only, derived
 	private Date createdAt;
 	private String createdBy;
-	private Date modifiedAt;
-	private String modifiedBy;
+	// a RateRef can not be modified; therefore, modifiedAt/By are not needed
 
-	public ResourceModel() {
+	/******************************* Constructors *****************************/
+	public RateRefModel() {
+	}
+	
+	public RateRefModel(String rateId) {
+		this.setRateId(rateId);
 	}
 
-	public ResourceModel(String name, String firstName, String lastName, String contactId) {
-		this.name = name;
-		this.firstName = firstName;
-		this.lastName = lastName;
-		this.contactId = contactId;
-	}
-
+	/********************************** ID *****************************/
 	/**
-	 * 
-	 * @return the ID
+	 * @return the id
 	 */
 	public String getId() {
 		return id;
 	}
 
 	/**
-	 * Set the ID to a unique random number
+	 * @param id
+	 *            the id to set
 	 */
 	public void setId(String id) {
 		this.id = id;
 	}
+
+	/**
+	 * Retrieve the id of the referenced RatesModel
+	 * @return the id of the referenced RatesModel
+	 */
+	public String getRateId() {
+		return rateId;
+	}
+
+	/**
+	 * Set the id of the referenced RatesModel
+	 * @param rateId the id of the referenced RatesModel
+	 */
+	public void setRateId(String rateId) {
+		this.rateId = rateId;
+	}
 	
-	public String getName() {
-		return name;
+	/**
+	 * Retrieve the title of the referenced RatesModel
+	 * @return the title of the referenced RatesModel
+	 */
+	public String getRateTitle() {
+		return rateTitle;
+	}
+
+	/**
+	 * Set the title of the referenced RatesModel.
+	 * RateTitle is a derived attribute. Do not set it on the client. It will be overwritten.
+	 * @param rateTitle the title of the referenced RatesModel to set
+	 */
+	public void setRateTitle(String rateTitle) {
+		this.rateTitle = rateTitle;
 	}
 	
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public String getContactId() {
-		return contactId;
-	}
-
-	public void setContactId(String contactId) {
-		this.contactId = contactId;
-	}
-
+	/**
+	 * @return the creation date of this object
+	 */
 	public Date getCreatedAt() {
 		return createdAt;
 	}
 
+	/**
+	 * @param createdAt the creation date of this object
+	 */
 	public void setCreatedAt(Date createdAt) {
 		this.createdAt = createdAt;
 	}
 
+	/**
+	 * @return the 
+	 */
 	public String getCreatedBy() {
 		return createdBy;
 	}
 
+	/**
+	 * @param createdBy
+	 */
 	public void setCreatedBy(String createdBy) {
 		this.createdBy = createdBy;
 	}
-
-	public Date getModifiedAt() {
-		return modifiedAt;
-	}
-
-	public void setModifiedAt(Date modifiedAt) {
-		this.modifiedAt = modifiedAt;
-	}
-
-	public String getModifiedBy() {
-		return modifiedBy;
-	}
-
-	public void setModifiedBy(String modifiedBy) {
-		this.modifiedBy = modifiedBy;
-	}
 	
 	/******************************* Comparator *****************************/
-	public static Comparator<ResourceModel> ResourceComparator = new Comparator<ResourceModel>() {
+	public static Comparator<RateRefModel> RatesRefComparator = new Comparator<RateRefModel>() {
 
-		public int compare(ResourceModel obj1, ResourceModel obj2) {
+		public int compare(RateRefModel obj1, RateRefModel obj2) {
 			if (obj1.getId() == null) {
 				return -1;
 			}

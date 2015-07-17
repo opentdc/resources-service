@@ -92,27 +92,71 @@ public class ResourcesService extends GenericService<ServiceProvider> {
 	}
 
 	@GET
-	@Path("/{id}")
+	@Path("/{resourceId}")
 	public ResourceModel readResource(
-			@PathParam("id") String id) 
+			@PathParam("resourceId") String resourceId) 
 		throws NotFoundException {
-		return sp.readResource(id);
+		return sp.readResource(resourceId);
 	}
 
 	@PUT
-	@Path("/{id}")
+	@Path("/{resourceId}")
 	public ResourceModel updateResource(
-		@PathParam("id") String id,
+		@PathParam("resourceId") String resourceId,
 		ResourceModel resource
 	) throws NotFoundException, ValidationException {
-		return sp.updateResource(id, resource);
+		return sp.updateResource(resourceId, resource);
 	}
 
 	@DELETE
-	@Path("/{id}")
+	@Path("/{resourceId}")
 	public void deleteResource(
-			@PathParam("id") String id) 
+			@PathParam("resourceId") String resourceId) 
 		throws NotFoundException, InternalServerErrorException {
-		sp.deleteResource(id);
+		sp.deleteResource(resourceId);
+	}
+	
+	/********************************** rateref ***************************************/
+	@GET
+	@Path("/{resourceId}/rateref")
+	@Produces(MediaType.APPLICATION_JSON)
+	public List<RateRefModel> listRateRefs(
+		@PathParam("resourceId") String resourceId,
+		@DefaultValue(DEFAULT_QUERY) @QueryParam("query") String query,
+		@DefaultValue(DEFAULT_QUERY_TYPE) @QueryParam("queryType") String queryType,
+		@DefaultValue(DEFAULT_POSITION) @QueryParam("position") int position,
+		@DefaultValue(DEFAULT_SIZE) @QueryParam("size") int size
+	) {
+		return sp.listRateRefs(resourceId, query, queryType, position, size);
+	}
+
+	@POST
+	@Path("/{resourceId}/rateref")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Produces(MediaType.APPLICATION_JSON)
+	public RateRefModel createRateRef(
+		@PathParam("resourceId") String resourceId, 
+		RateRefModel rateRef
+	) throws DuplicateException, ValidationException {
+		return sp.createRateRef(resourceId, rateRef);
+	}
+	
+	@GET
+	@Path("/{resourceId}/rateref/{rateRefId}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public RateRefModel readRateRef(
+		@PathParam("resourceId") String resourceId,
+		@PathParam("rateRefId") String rateRefId
+	) throws NotFoundException {
+		return sp.readRateRef(resourceId, rateRefId);
+	}
+
+	@DELETE
+	@Path("/{resourceId}/rateref/{rateRefId}")
+	public void deleteRateRef(
+		@PathParam("resourceId") String resourceId,
+		@PathParam("rateRefId") String rateRefId
+	) throws NotFoundException, InternalServerErrorException {
+		sp.deleteRateRef(resourceId, rateRefId);
 	}
 }

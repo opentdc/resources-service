@@ -29,6 +29,7 @@ import org.opentdc.service.exception.*;
 
 public interface ServiceProvider {
 
+	//**************************** Resource *************************************
 	public abstract List<ResourceModel> listResources(
 		String queryType,
 		String query,
@@ -41,15 +42,39 @@ public interface ServiceProvider {
 		throws DuplicateException, ValidationException;
 
 	public abstract ResourceModel readResource(
-		String id) 
+		String resourceId) 
 		throws NotFoundException;
 
 	public abstract ResourceModel updateResource(
-		String id, 
+		String resourceId, 
 		ResourceModel resource) 
 		throws NotFoundException, ValidationException;
 
 	public abstract void deleteResource(
-		String id) 
+		String resourceId) 
 		throws NotFoundException, InternalServerErrorException;
+	
+	//**************************** RateRef *************************************
+	public abstract List<RateRefModel> listRateRefs(
+			String resourceId,
+			String queryType,
+			String query,
+			int position,
+			int size
+		);
+
+	public abstract RateRefModel createRateRef(
+			String resourceId,
+			RateRefModel rateRef) 
+	throws DuplicateException, ValidationException;
+
+	public abstract RateRefModel readRateRef(
+			String resourceId,
+			String rateRefId) 
+	throws NotFoundException;
+
+	public abstract void deleteRateRef(
+			String resourceId,
+			String rateRefId) 
+	throws NotFoundException, InternalServerErrorException;
 }
