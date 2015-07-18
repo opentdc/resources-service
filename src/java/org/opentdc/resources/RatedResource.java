@@ -89,4 +89,18 @@ public class RatedResource {
 	public boolean removeRateRef(RateRefModel rateRef) {
 		return this.rateRefs.remove(rateRef);
 	}
+	
+	/**
+	 * Tests whether this RatedResource contains a RateRefModel with the same Rate (id).
+	 * @param rateId the rate id to test for
+	 * @return true if the RateRefModel is already contained, false if otherwise
+	 */
+	public boolean containsRate(String rateId) {
+		for (RateRefModel _model : rateRefs) {
+			if (_model.getRateId() == rateId) {
+				return true;
+			}
+		}
+		return false;
+	}
 }
