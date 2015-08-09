@@ -34,6 +34,7 @@ public class RatedResource {
 	private ResourceModel model;
 	ArrayList<RateRefModel> rateRefs;
 	
+	/******************************* Constructors *****************************/
 	/**
 	 * Constructor.
 	 */
@@ -41,6 +42,7 @@ public class RatedResource {
 		rateRefs = new ArrayList<RateRefModel>();
 	}
 	
+	/******************************* Setters and Getters  *****************************/
 	/**
 	 * Retrieve the ResourceModel.
 	 * @return the model

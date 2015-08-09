@@ -34,6 +34,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * A Reference to a Rate.
  * We only keep a reference (= ID) as the foreign key to a RatesModel in RatesService
  * plus the commonly used derived attribute rateTitle.
+ * @author Bruno Kaiser
  */
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlRootElement
@@ -53,7 +54,7 @@ public class RateRefModel {
 		this.setRateId(rateId);
 	}
 
-	/********************************** ID *****************************/
+	/********************************** setters / getters *****************************/
 	/**
 	 * @return the id
 	 */
@@ -70,33 +71,33 @@ public class RateRefModel {
 	}
 
 	/**
-	 * Retrieve the id of the referenced RatesModel
-	 * @return the id of the referenced RatesModel
+	 * Retrieve the id of the referenced RateModel
+	 * @return the id of the referenced RateModel
 	 */
 	public String getRateId() {
 		return rateId;
 	}
 
 	/**
-	 * Set the id of the referenced RatesModel
-	 * @param rateId the id of the referenced RatesModel
+	 * Set the id of the referenced RateModel
+	 * @param rateId the id of the referenced RateModel
 	 */
 	public void setRateId(String rateId) {
 		this.rateId = rateId;
 	}
 	
 	/**
-	 * Retrieve the title of the referenced RatesModel
-	 * @return the title of the referenced RatesModel
+	 * Retrieve the title of the referenced RateModel
+	 * @return the title of the referenced RateModel
 	 */
 	public String getRateTitle() {
 		return rateTitle;
 	}
 
 	/**
-	 * Set the title of the referenced RatesModel.
-	 * RateTitle is a derived attribute. Do not set it on the client. It will be overwritten.
-	 * @param rateTitle the title of the referenced RatesModel to set
+	 * Set the title of the referenced RateModel.
+	 * rateTitle is a derived attribute. Do not set it on the client. It will be overwritten.
+	 * @param rateTitle the title of the referenced RateModel to set
 	 */
 	public void setRateTitle(String rateTitle) {
 		this.rateTitle = rateTitle;
@@ -117,14 +118,16 @@ public class RateRefModel {
 	}
 
 	/**
-	 * @return the 
+	 * Retrieve the creator of this RateRef
+	 * @return the login id of the creator of this RateRef
 	 */
 	public String getCreatedBy() {
 		return createdBy;
 	}
 
 	/**
-	 * @param createdBy
+	 * Set the creator of this RateRef
+	 * @param createdBy the login id of the creator of this RateRef
 	 */
 	public void setCreatedBy(String createdBy) {
 		this.createdBy = createdBy;
