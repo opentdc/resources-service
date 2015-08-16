@@ -46,10 +46,8 @@ public class ResourceModel {
 	public ResourceModel() {
 	}
 
-	public ResourceModel(String name, String firstName, String lastName, String contactId) {
+	public ResourceModel(String name, String contactId) {
 		this.name = name;
-		this.firstName = firstName;
-		this.lastName = lastName;
 		this.contactId = contactId;
 	}
 
