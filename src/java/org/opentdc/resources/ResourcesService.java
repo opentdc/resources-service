@@ -80,7 +80,7 @@ public class ResourcesService extends GenericService<ServiceProvider> {
 		@DefaultValue(DEFAULT_POSITION) @QueryParam("position") int position,
 		@DefaultValue(DEFAULT_SIZE) @QueryParam("size") int size			
 	) {
-		return sp.listResources(queryType, query, position, size);
+		return sp.listResources(query, queryType, position, size);
 	}
 
 	@POST

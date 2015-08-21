@@ -31,8 +31,8 @@ public interface ServiceProvider {
 
 	//**************************** Resource *************************************
 	public abstract List<ResourceModel> listResources(
-		String queryType,
 		String query,
+		String queryType,
 		int position,
 		int size
 	);
@@ -57,8 +57,8 @@ public interface ServiceProvider {
 	//**************************** RateRef *************************************
 	public abstract List<RateRefModel> listRateRefs(
 			String resourceId,
-			String queryType,
 			String query,
+			String queryType,
 			int position,
 			int size
 		);
