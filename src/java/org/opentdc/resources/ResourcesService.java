@@ -27,6 +27,7 @@ import java.util.List;
 import java.util.logging.Logger;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.DELETE;
 import javax.ws.rs.DefaultValue;
@@ -86,9 +87,10 @@ public class ResourcesService extends GenericService<ServiceProvider> {
 	@POST
 	@Path("/")
 	public ResourceModel createResource(
+			@Context HttpServletRequest request,
 			ResourceModel resource) 
 		throws DuplicateException, ValidationException {
-		return sp.createResource(resource);
+		return sp.createResource(request, resource);
 	}
 
 	@GET
@@ -102,10 +104,11 @@ public class ResourcesService extends GenericService<ServiceProvider> {
 	@PUT
 	@Path("/{resourceId}")
 	public ResourceModel updateResource(
+		@Context HttpServletRequest request,
 		@PathParam("resourceId") String resourceId,
 		ResourceModel resource
 	) throws NotFoundException, ValidationException {
-		return sp.updateResource(resourceId, resource);
+		return sp.updateResource(request, resourceId, resource);
 	}
 
 	@DELETE
@@ -135,10 +138,11 @@ public class ResourcesService extends GenericService<ServiceProvider> {
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Produces(MediaType.APPLICATION_JSON)
 	public RateRefModel createRateRef(
+		@Context HttpServletRequest request,
 		@PathParam("resourceId") String resourceId, 
 		RateRefModel rateRef
 	) throws DuplicateException, ValidationException {
-		return sp.createRateRef(resourceId, rateRef);
+		return sp.createRateRef(request, resourceId, rateRef);
 	}
 	
 	@GET

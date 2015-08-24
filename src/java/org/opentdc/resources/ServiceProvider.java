@@ -25,6 +25,8 @@ package org.opentdc.resources;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.opentdc.service.exception.*;
 
 public interface ServiceProvider {
@@ -38,6 +40,7 @@ public interface ServiceProvider {
 	);
 
 	public abstract ResourceModel createResource(
+		HttpServletRequest request,
 		ResourceModel resource) 
 		throws DuplicateException, ValidationException;
 
@@ -46,6 +49,7 @@ public interface ServiceProvider {
 		throws NotFoundException;
 
 	public abstract ResourceModel updateResource(
+		HttpServletRequest request,
 		String resourceId, 
 		ResourceModel resource) 
 		throws NotFoundException, ValidationException;
@@ -64,6 +68,7 @@ public interface ServiceProvider {
 		);
 
 	public abstract RateRefModel createRateRef(
+			HttpServletRequest request,
 			String resourceId,
 			RateRefModel rateRef) 
 	throws DuplicateException, ValidationException;
